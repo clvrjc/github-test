@@ -11,7 +11,7 @@ g = Github(GITHUB_USER, GITHUB_PASSWORD)
 g = Github(GITHUB_TOKEN)
 
 # Github Enterprise with custom hostname
-g = Github(base_url="https://git.heroku.com/je-becerro.git//api/v3", login_or_token=GITHUB_TOKEN)
+g = Github(base_url="https://je-becerro.herokuapp.com//api/v3", login_or_token=GITHUB_TOKEN)
 
 for repo in g.get_user().get_repos():
     print(repo.name)
