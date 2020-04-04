@@ -1,3 +1,4 @@
 Flask
+github
 GitPython
 gunicorn==19.6.0
