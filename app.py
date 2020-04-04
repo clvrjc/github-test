@@ -1,7 +1,7 @@
 import git
 import os
 
-repo_dir = os.path.join(rw_dir, 'github-test')
+repo_dir = os.path.join('https://github.com/clvrjc/', 'github-test')
 file_name = os.path.join(repo_dir, 'index.html')
 print("file created")
 r = git.Repo.init(repo_dir)
