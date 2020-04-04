@@ -11,7 +11,7 @@ from git import Repo
 repo_dir = 'github-test'
 repo = Repo(repo_dir)
 file_list = [
-    'C:\Users\User\Downloads\templates\Blog\static\images\jear.jpg'
+    'C:/Users/User/Downloads/templates/Blog/static/images/jear.jpg'
 ]
 commit_message = 'Add simple regression analysis'
 repo.index.add(file_list)
