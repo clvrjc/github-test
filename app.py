@@ -8,10 +8,10 @@ print("good")
 '''
 from git import Repo
 
-repo_dir = 'github-test'
+repo_dir = 'clvrjc/github-test/blob/master/'
 repo = Repo(repo_dir)
 file_list = [
-    'C:/Users/User/Downloads/templates/Blog/static/images/jear.jpg'
+    r'C:\Users\User\Downloads\templates\Blog\static\images\jear.jpg'
 ]
 commit_message = 'Add simple regression analysis'
 repo.index.add(file_list)
