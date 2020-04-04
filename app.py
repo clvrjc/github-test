@@ -1,4 +1,5 @@
 import git
+import os
 
 repo_dir = os.path.join(rw_dir, 'github-test')
 file_name = os.path.join(repo_dir, 'index.html')
