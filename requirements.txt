@@ -1,0 +1,3 @@
+Flask
+git
+gunicorn==19.6.0
