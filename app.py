@@ -26,9 +26,18 @@ g = Github(GITHUB_TOKEN)
 #g = Github(base_url="https://je-becerro.herokuapp.com//api/v3", login_or_token=GITHUB_TOKEN)
 #-----------------------------------------------------------------------------------------------
 
+html = """<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>"""
 #Create a new file in the repository
 repo = g.get_repo("clvrjc/github-test")
-repo.create_file("test.txt", "comment", "content inside", branch="master")#master is a default branch
+repo.create_file("kani.html", "comment", html, branch="master")#master is a default branch
 #{'content': ContentFile(path="test.txt"), 'commit': Commit(sha='5b584cf6d32d960bb7bee8ce94f161d939aec377')}	
 
 '''
@@ -51,11 +60,6 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET','POST'])
 def index():
-	#Update a file in the repository
-	repo = g.get_repo("clvrjc/github-test")
-	contents = repo.get_contents("test.txt", ref="master")
-	repo.update_file(contents.path, "another comment", "gwap ko insde and out", contents.sha, branch="master")
-	#{'commit': Commit(sha=sha1_('test')), 'content': ContentFile(path="test.txt")}
 	
 	return "ok"
 
