@@ -11,8 +11,11 @@ GITHUB_USER = os.environ['GITHUB_USER']
 GITHUB_PASSWORD = os.environ['GITHUB_PASSWORD']
 GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
 
-sha1_gene('sample')
-
+sample = 'sample'
+print(sample)
+m = sha1(sample.encode('utf-8'))
+print(m.hexdigest())
+return m.hexdigest()
 #---------------------------------------------------------------------------------------------
 #Using username and password to connect
 #g = Github(GITHUB_USER, GITHUB_PASSWORD)
@@ -57,10 +60,7 @@ def index():
 	
 	return "ok"
 
-def sha1_gene(var):
-	m = sha1(var.encode('utf-8'))
-	print(m.hexdigest())
-	return m.hexdigest()
+
 
 if __name__ == "__main__":
 	app.run()
