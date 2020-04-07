@@ -15,13 +15,13 @@ app = Flask(__name__)
 @app.route('/', methods=['GET','POST'])
 def index():
     # using username and password
-    g = Github(GITHUB_USER, GITHUB_PASSWORD)
+    #g = Github(GITHUB_USER, GITHUB_PASSWORD)
 
     # or using an access token
     g = Github(GITHUB_TOKEN)
 
     # Github Enterprise with custom hostname
-    g = Github(base_url="https://je-becerro.herokuapp.com//api/v3", login_or_token=GITHUB_TOKEN)
+    #g = Github(base_url="https://je-becerro.herokuapp.com//api/v3", login_or_token=GITHUB_TOKEN)
 
     for repo in g.get_user().get_repos():
         print(repo.name)
