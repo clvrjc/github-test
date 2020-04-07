@@ -27,7 +27,10 @@ def index():
 		print(repo.name)
 		repo.edit(has_wiki=False)
 		# to see all the available attribbutes and methods
-		print(dir(repo))
+		#print(dir(repo))
+		repo = g.get_repo("github-test")
+		repo.create_file("test.txt", "test", "test", branch="test")
+		{'content': ContentFile(path="test.txt"), 'commit': Commit(sha=GITHUB_TOKEN)}
 	
 	return "ok"
 
