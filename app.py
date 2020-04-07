@@ -29,7 +29,7 @@ g = Github(GITHUB_TOKEN)
 #Create a new file in the repository
 repo = g.get_repo("clvrjc/github-test")
 repo.create_file("test.txt", "comment", "content inside", branch="master")#master is a default branch
-{'content': ContentFile(path="test.txt"), 'commit': Commit(sha='5b584cf6d32d960bb7bee8ce94f161d939aec377')}	
+#{'content': ContentFile(path="test.txt"), 'commit': Commit(sha='5b584cf6d32d960bb7bee8ce94f161d939aec377')}	
 
 '''
 #Update a file in the repository
@@ -55,7 +55,7 @@ def index():
 	repo = g.get_repo("clvrjc/github-test")
 	contents = repo.get_contents("test.txt", ref="master")
 	repo.update_file(contents.path, "another comment", "gwap ko insde and out", contents.sha, branch="master")
-	{'commit': Commit(sha=sha1_('test')), 'content': ContentFile(path="test.txt")}
+	#{'commit': Commit(sha=sha1_('test')), 'content': ContentFile(path="test.txt")}
 	
 	return "ok"
 
