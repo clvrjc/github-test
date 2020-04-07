@@ -25,7 +25,7 @@ for repo in g.get_user().get_repos():
 	# to see all the available attribbutes and methods
 	#print(dir(repo))
 	repo = g.get_repo("clvrjc/github-test")
-	repo.create_file("test.txt", "test", "test", branch="test")
+	repo.create_file("test.txt", "test", "test", branch="master")
 	{'content': ContentFile(path="test.txt"), 'commit': Commit(sha=GITHUB_TOKEN)}
 
 app = Flask(__name__)
