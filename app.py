@@ -15,7 +15,6 @@ sample = 'sample'
 print(sample)
 m = sha1(sample.encode('utf-8'))
 print(m.hexdigest())
-return m.hexdigest()
 #---------------------------------------------------------------------------------------------
 #Using username and password to connect
 #g = Github(GITHUB_USER, GITHUB_PASSWORD)
