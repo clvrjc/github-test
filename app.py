@@ -22,14 +22,15 @@ g = Github(GITHUB_TOKEN)
 #Create a new file in the repository
 repo = g.get_repo("clvrjc/github-test")
 repo.create_file("test.txt", "comment", "content inside", branch="master")#master is a default branch
-{'content': ContentFile(path="test.txt"), 'commit': Commit(sha=GITHUB_TOKEN)}	
+{'content': ContentFile(path="test.txt"), 'commit': Commit(sha="")}	
 
+'''
 #Update a file in the repository
 repo = g.get_repo("clvrjc/github-test")
 contents = repo.get_contents("test.txt", ref="master")
 repo.update_file(contents.path, "another comment", "gwap ko insde and out", contents.sha, branch="master")
-{'commit': Commit(sha=GITHUB-TOKEN), 'content': ContentFile(path="test.txt")}
-
+{'commit': Commit(sha=""), 'content': ContentFile(path="test.txt")}
+'''
 
 for repo in g.get_user().get_repos():
 	#print(repo.name)
