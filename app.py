@@ -35,26 +35,25 @@ html = """<!DOCTYPE html>
 
 </body>
 </html>"""
-#Create a new file in the repository
-repo = g.get_repo("clvrjc/github-test")
-repo.create_file("kani.html", "comment", html, branch="master")#master is a default branch
-#{'content': ContentFile(path="test.txt"), 'commit': Commit(sha='5b584cf6d32d960bb7bee8ce94f161d939aec377')}	
+html2 = """<!DOCTYPE html>
+<html>
+<head>
+	<title>Updated</title>
+</head>
+<body>
+<h1>Updated</h1>
+</body>
+</html>"""
 
 '''
-#Update a file in the repository
-repo = g.get_repo("clvrjc/github-test")
-contents = repo.get_contents("test.txt", ref="master")
-repo.update_file(contents.path, "another comment", "gwap ko insde and out", contents.sha, branch="master")
-{'commit': Commit(sha=""), 'content': ContentFile(path="test.txt")}
-'''
-
 for repo in g.get_user().get_repos():
 	#print(repo.name)
 	repo.edit(has_wiki=False)
 	# to see all the available attribbutes and methods
 	#print(dir(repo))
 	
-	
+'''	
+repo = g.get_repo("clvrjc/github-test")
 
 app = Flask(__name__)
 
@@ -63,7 +62,23 @@ def index():
 	
 	return "ok"
 
+@app.route('/create', methods=['GET','POST'])
+def create():
+	repo.create_file("sample.html", "sample", html, branch="master")#master is a default branch
+	
+	return "file created"
 
+@app.route('/update', methods=['GET','POST'])
+def update():
+	contents = repo.get_contents("sample.html", ref="master")
+	repo.update_file(contents.path, "update sample.html", html2, contents.sha, branch="master")
+	return "updated"
+
+@app.route('/delete', methods=['GET','POST'])
+def delete():
+	contents = repo.get_contents("sample.html", ref="master")
+	repo.delete_file(contents.path, "remove sample.html", contents.sha, branch="master")
+	return "deleted"
 
 if __name__ == "__main__":
 	app.run()
