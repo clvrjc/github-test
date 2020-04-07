@@ -28,7 +28,6 @@ def index():
         repo.edit(has_wiki=False)
         # to see all the available attributes and methods
         print(dir(repo))
-	return 'ok'
 
 if __name__ == "__main__":
 	app.run()
