@@ -1,21 +1,14 @@
-from github import Github
-import os
-GITHUB_USER = os.environ['GITHUB_USER']
-GITHUB_PASSWORD = os.environ['GITHUB_PASSWORD']
-GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
-
-
-
 #Libraries to be import START
 import random
 from flask import Flask, request, g, session, render_template, redirect, url_for, flash
 import os
 import json
 import time, string, random, re
+from github import Github
 
-#import Mongo#import Mongo.py
-#from NLU import nlp
-#from collections import Counter #install collections
+GITHUB_USER = os.environ['GITHUB_USER']
+GITHUB_PASSWORD = os.environ['GITHUB_PASSWORD']
+GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
 
 app = Flask(__name__)
 
