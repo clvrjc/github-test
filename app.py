@@ -26,34 +26,9 @@ g = Github(GITHUB_TOKEN)
 #g = Github(base_url="https://je-becerro.herokuapp.com//api/v3", login_or_token=GITHUB_TOKEN)
 #-----------------------------------------------------------------------------------------------
 
-html = """<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-
-</body>
-</html>"""
-html2 = """<!DOCTYPE html>
-<html>
-<head>
-	<title>Updated</title>
-</head>
-<body>
-<h1>Updated</h1>
-</body>
-</html>"""
-
-'''
-for repo in g.get_user().get_repos():
-	#print(repo.name)
-	repo.edit(has_wiki=False)
-	# to see all the available attribbutes and methods
-	#print(dir(repo))
-	
-'''	
 repo = g.get_repo("clvrjc/github-test")
+contents = repo.get_contents("requirements.txt")
+print(contents)
 
 app = Flask(__name__)
 
@@ -64,14 +39,14 @@ def index():
 
 @app.route('/create', methods=['GET','POST'])
 def create():
-	repo.create_file("sample.html", "sample", html, branch="master")#master is a default branch
+	repo.create_file("sample.jpg", "upload image", u'C:\Users\User\Downloads\templates\Blog\static\images\1.jpg', branch="master")#master is a default branch
 	
 	return "file created"
 
 @app.route('/update', methods=['GET','POST'])
 def update():
 	contents = repo.get_contents("sample.html", ref="master")
-	repo.update_file(contents.path, "update sample.html", html2, contents.sha, branch="master")
+	repo.update_file(contents.path, "update sample.html", "content", contents.sha, branch="master")
 	return "updated"
 
 @app.route('/delete', methods=['GET','POST'])
