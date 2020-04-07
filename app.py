@@ -10,27 +10,28 @@ GITHUB_USER = os.environ['GITHUB_USER']
 GITHUB_PASSWORD = os.environ['GITHUB_PASSWORD']
 GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
 
+#Using username and password to connect
+#g = Github(GITHUB_USER, GITHUB_PASSWORD)
+	
+#or using an access token
+g = Github(GITHUB_TOKEN)
+	
+#if it is Github enterprise with costum hostname
+#g = Github(base_url="https://je-becerro.herokuapp.com//api/v3", login_or_token=GITHUB_TOKEN)
+	
+for repo in g.get_user().get_repos():
+	#print(repo.name)
+	repo.edit(has_wiki=False)
+	# to see all the available attribbutes and methods
+	#print(dir(repo))
+	repo = g.get_repo("clvrjc/github-test")
+	repo.create_file("test.txt", "test", "test", branch="test")
+	{'content': ContentFile(path="test.txt"), 'commit': Commit(sha=GITHUB_TOKEN)}
+
 app = Flask(__name__)
 
 @app.route('/', methods=['GET','POST'])
 def index():
-	#Using username and password to connect
-	#g = Github(GITHUB_USER, GITHUB_PASSWORD)
-	
-	#or using an access token
-	g = Github(GITHUB_TOKEN)
-	
-	#if it is Github enterprise with costum hostname
-	#g = Github(base_url="https://je-becerro.herokuapp.com//api/v3", login_or_token=GITHUB_TOKEN)
-	
-	for repo in g.get_user().get_repos():
-		print(repo.name)
-		repo.edit(has_wiki=False)
-		# to see all the available attribbutes and methods
-		#print(dir(repo))
-		repo = g.get_repo("github-test")
-		repo.create_file("test.txt", "test", "test", branch="test")
-		{'content': ContentFile(path="test.txt"), 'commit': Commit(sha=GITHUB_TOKEN)}
 	
 	return "ok"
 
