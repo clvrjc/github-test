@@ -39,7 +39,7 @@ def index():
 
 @app.route('/create', methods=['GET','POST'])
 def create():
-	repo.create_file("sample.jpg", "upload image", r'C:\Users\User\Downloads\templates\Blog\static\images\1.jpg', branch="master")#master is a default branch
+	repo.create_file("sample.html", "html', branch="master")#master is a default branch
 	
 	return "file created"
 
