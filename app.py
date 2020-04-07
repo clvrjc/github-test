@@ -11,6 +11,7 @@ GITHUB_USER = os.environ['GITHUB_USER']
 GITHUB_PASSWORD = os.environ['GITHUB_PASSWORD']
 GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
 
+sha1_('sample')
 
 #---------------------------------------------------------------------------------------------
 #Using username and password to connect
@@ -26,7 +27,7 @@ g = Github(GITHUB_TOKEN)
 #Create a new file in the repository
 repo = g.get_repo("clvrjc/github-test")
 repo.create_file("test.txt", "comment", "content inside", branch="master")#master is a default branch
-{'content': ContentFile(path="test.txt"), 'commit': Commit(sha=sha1_('test'))}	
+{'content': ContentFile(path="test.txt"), 'commit': Commit(sha='5b584cf6d32d960bb7bee8ce94f161d939aec377')}	
 
 '''
 #Update a file in the repository
@@ -58,6 +59,7 @@ def index():
 
 def sha1_(var):
 	m = sha1(var.encode('utf-8'))
+	print(m.hexdigest())
 	return m.hexdigest()
 
 if __name__ == "__main__":
