@@ -18,21 +18,36 @@ g = Github(GITHUB_TOKEN)
 	
 #if it is Github enterprise with costum hostname
 #g = Github(base_url="https://je-becerro.herokuapp.com//api/v3", login_or_token=GITHUB_TOKEN)
-	
+
+#Create a new file in the repository
+repo = g.get_repo("clvrjc/github-test")
+repo.create_file("test.txt", "comment", "content inside", branch="master")#master is a default branch
+{'content': ContentFile(path="test.txt"), 'commit': Commit(sha=GITHUB_TOKEN)}	
+
+#Update a file in the repository
+repo = g.get_repo("clvrjc/github-test")
+contents = repo.get_contents("test.txt", ref="master")
+repo.update_file(contents.path, "another comment", "gwap ko insde and out", contents.sha, branch="master")
+{'commit': Commit(sha=GITHUB-TOKEN), 'content': ContentFile(path="test.txt")}
+
+
 for repo in g.get_user().get_repos():
 	#print(repo.name)
 	repo.edit(has_wiki=False)
 	# to see all the available attribbutes and methods
 	#print(dir(repo))
-	repo = g.get_repo("clvrjc/github-test")
-	repo.create_file("test.txt", "test", "test", branch="master")
-	{'content': ContentFile(path="test.txt"), 'commit': Commit(sha=GITHUB_TOKEN)}
+	
+	
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET','POST'])
 def index():
-	
+	#Update a file in the repository
+	repo = g.get_repo("clvrjc/github-test")
+	contents = repo.get_contents("test.txt", ref="master")
+	repo.update_file(contents.path, "another comment", "gwap ko insde and out", contents.sha, branch="master")
+	{'commit': Commit(sha=GITHUB-TOKEN), 'content': ContentFile(path="test.txt")}
 	return "ok"
 
 if __name__ == "__main__":
